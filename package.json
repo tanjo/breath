@@ -1,0 +1,11 @@
+{
+  "name": "breath",
+  "version": "1.0.0",
+  "description": "Reminder for health",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tanjo",
+  "license": "Apache License, Version 2.0"
+}
