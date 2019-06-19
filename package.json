@@ -2,7 +2,7 @@
   "name": "breath",
   "version": "1.0.0",
   "description": "Reminder for health",
-  "main": "src/main.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-packager . breath --platform=darwin--arch=x64 --version=1.0.0 --icon=res/breath.icns "
