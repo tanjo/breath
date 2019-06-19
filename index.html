@@ -5,12 +5,24 @@
     <title>Breath</title>
   </head>
   <body>
-    <!-- <h1>Hello World!</h1>
-    <button onclick="notification()">Notification</button>
     <script type="text/javascript">
-      function notification() {
-        new Notification("Hello World!");
-      }
-    </script> -->
+      let interval;
+
+      const ipc = require('electron').ipcRenderer;
+
+      ipc.on('notifier-started', (event, arg) => {
+        clearInterval(interval);
+        interval = setInterval(() => {
+          new Notification("休憩しましょう", {
+            body: Math.floor(parseInt(arg)/1000/60/6)/10 + "時間経過しました"
+          });
+        }, parseInt(arg));
+      });
+
+      ipc.on('notifier-stopped', (event) => {
+        clearInterval(interval);
+        new Notification("休憩管理は終了しました");
+      });
+    </script>
   </body>
 </html>

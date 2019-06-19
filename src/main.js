@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const menu = require('./lib/menu');
+const path = require('path');
 
 let win;
 
@@ -9,6 +10,7 @@ function createWindow () {
 
   win = new BrowserWindow({
     title: "notify message",
+    icon: path.join(__dirname + './res/icon.png'),
     frame: false,
     show: false,
     x: width - 290,
@@ -16,7 +18,10 @@ function createWindow () {
     width: 280,
     height: 80,
     setMenu: null,
-    skipTaskbar: true
+    skipTaskbar: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   win.loadFile('index.html');
@@ -29,7 +34,7 @@ function createWindow () {
     win = null;
   });
 
-  menu.setup();
+  menu.setup(win);
 };
 
 app.on('ready', createWindow);
